@@ -24,26 +24,24 @@ const services = [
 
 export default function Services() {
   return (
-    <section id='services' className='py-24 md:py-32 gradient-bg' style={{ backgroundColor: '#111111' }}>
-      <div className='max-w-[1200px] mx-auto px-6 md:px-16'>
-        {/* Title */}
+    <section id='services' className='py-16 sm:py-20 md:py-32 gradient-bg' style={{ backgroundColor: '#111111' }}>
+      <div className='max-w-[1200px] mx-auto px-4 sm:px-6 md:px-16'>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className='text-center mb-16'
+          className='text-center mb-8 sm:mb-12 md:mb-16'
         >
-          <span className='text-sm font-medium text-gray-500 uppercase tracking-widest'>
+          <span className='text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-widest'>
             Services
           </span>
-          <h2 className='text-4xl md:text-5xl font-bold mt-2'>
+          <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-2'>
             What I Offer
           </h2>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6'>
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -56,8 +54,8 @@ export default function Services() {
                 type: 'spring',
                 stiffness: 100
               }}
-              className='group relative p-4 md:p-6 rounded-2xl md:rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500'
-              whileHover={{ y: -12, scale: 1.02 }}
+              className='group relative p-4 sm:p-6 md:p-6 rounded-2xl md:rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-500'
+              whileHover={{ y: -8, scale: 1.02 }}
               style={{ boxShadow: '0 8px 30px rgba(0,0,0,0.3)' }}
             >
               <motion.div 
@@ -65,15 +63,15 @@ export default function Services() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <service.icon size={24} className='text-gray-300' />
+                <service.icon size={20} className='text-gray-300 sm:text-[24px]' />
               </motion.div>
               
-              <h3 className='text-base md:text-lg font-semibold mb-2 md:mb-3'>{service.title}</h3>
-              <p className='text-gray-500 leading-relaxed text-xs md:text-sm mb-3 md:mb-4'>{service.description}</p>
+              <h3 className='text-base sm:text-lg md:text-lg font-semibold mb-2 md:mb-3'>{service.title}</h3>
+              <p className='text-gray-500 leading-relaxed text-xs sm:text-sm mb-3 md:mb-4'>{service.description}</p>
               
-              <ul className='space-y-2'>
+              <ul className='space-y-1.5 sm:space-y-2'>
                 {service.features.map((feature) => (
-                  <li key={feature} className='flex items-center gap-2 text-xs text-gray-400'>
+                  <li key={feature} className='flex items-center gap-2 text-xs sm:text-sm text-gray-400'>
                     <span className='w-1.5 h-1.5 rounded-full bg-gray-600' />
                     {feature}
                   </li>
@@ -81,7 +79,7 @@ export default function Services() {
               </ul>
 
               <motion.div
-                className='absolute bottom-6 left-6 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100'
+                className='absolute bottom-4 left-4 sm:bottom-6 sm:left-6 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100'
                 whileHover={{ x: 4 }}
               >
                 <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>

@@ -13,14 +13,21 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
   background-color: #0a0a0a;
   color: #ffffff;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* Animated gradient backgrounds */
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 .gradient-bg {
   background: linear-gradient(-45deg, #0a0a0a, #0f0f1a, #0a0a1a, #0d0d15);
   background-size: 400% 400%;
@@ -105,4 +112,14 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #444444;
+}
+
+@media (max-width: 640px) {
+  .gradient-orb-1 {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  }
+  
+  .gradient-orb-2 {
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+  }
 }

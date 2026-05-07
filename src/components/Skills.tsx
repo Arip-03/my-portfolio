@@ -15,25 +15,24 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id='skills' className='py-24 md:py-32 gradient-bg' style={{ backgroundColor: '#0a0a0a' }}>
-      <div className='max-w-[1200px] mx-auto px-6 md:px-16'>
+    <section id='skills' className='py-16 sm:py-20 md:py-32 gradient-bg' style={{ backgroundColor: '#0a0a0a' }}>
+      <div className='max-w-[1200px] mx-auto px-4 sm:px-6 md:px-16'>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <div className='text-center mb-16'>
-            <span className='text-sm font-medium text-gray-500 uppercase tracking-widest'>
+          <div className='text-center mb-8 sm:mb-12 md:mb-16'>
+            <span className='text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-widest'>
               Skills
             </span>
-            <h2 className='text-4xl md:text-5xl font-bold mt-2'>
+            <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-2'>
               My Expertise
             </h2>
           </div>
 
-          {/* Circular Cards Grid with Staggered Animation */}
-          <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-10 gap-4 md:gap-6 justify-items-center'>
+          <div className='grid grid-cols-5 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-10 gap-3 sm:gap-4 md:gap-6 justify-items-center'>
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
@@ -47,7 +46,7 @@ export default function Skills() {
                   stiffness: 150,
                   damping: 12
                 }}
-                className='group relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center cursor-pointer'
+                className='group relative w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center cursor-pointer'
                 style={{
                   background: `linear-gradient(135deg, ${skill.color}20 0%, ${skill.color}10 100%)`,
                   border: `2px solid ${skill.color}40`,
@@ -59,13 +58,12 @@ export default function Skills() {
                 }}
               >
                 <motion.i 
-                  className={`${skill.icon} text-2xl md:text-3xl`} 
+                  className={`${skill.icon} text-lg xs:text-xl sm:text-2xl md:text-3xl`} 
                   style={{ color: skill.color }}
                   whileHover={{ scale: 1.2, rotate: 5 }}
                 />
                 
-                {/* Skill name below */}
-                <span className='absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity'>
+                <span className='absolute -bottom-5 xs:-bottom-6 sm:-bottom-6 left-1/2 -translate-x-1/2 text-[10px] xs:text-xs text-gray-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity'>
                   {skill.name}
                 </span>
               </motion.div>

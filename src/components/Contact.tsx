@@ -44,28 +44,27 @@ export default function Contact() {
   }
 
   return (
-    <section id='contact' className='py-24 md:py-32 gradient-bg' style={{ backgroundColor: '#111111' }}>
-      <div className='max-w-[1200px] mx-auto px-6 md:px-16'>
+    <section id='contact' className='py-16 sm:py-20 md:py-32 gradient-bg' style={{ backgroundColor: '#111111' }}>
+      <div className='max-w-[1200px] mx-auto px-4 sm:px-6 md:px-16'>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className='text-center mb-16'
+          className='text-center mb-8 sm:mb-12 md:mb-16'
         >
-          <span className='text-sm font-medium text-gray-500 uppercase tracking-widest'>
+          <span className='text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-widest'>
             Contact
           </span>
-          <h2 className='text-4xl md:text-5xl font-bold mt-2'>
+          <h2 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-2'>
             Get In Touch
           </h2>
-          <p className='text-gray-500 mt-4 max-w-xl mx-auto'>
+          <p className='text-gray-500 mt-3 sm:mt-4 max-w-xl mx-auto text-sm sm:text-base'>
             Have a project in mind? Let's create something amazing together.
           </p>
         </motion.div>
 
-        <div className='grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto'>
-          {/* Contact Info */}
+        <div className='grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-4xl mx-auto'>
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -73,7 +72,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
           >
             <motion.h3 
-              className='text-xl md:text-2xl font-semibold mb-4 md:mb-6'
+              className='text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4 md:mb-6'
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -81,7 +80,7 @@ export default function Contact() {
               Let's work together
             </motion.h3>
             <motion.p 
-              className='text-gray-500 mb-6 md:mb-10 leading-relaxed text-sm md:text-base'
+              className='text-gray-500 mb-4 sm:mb-6 md:mb-10 leading-relaxed text-xs sm:text-sm md:text-base'
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
@@ -89,7 +88,7 @@ export default function Contact() {
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </motion.p>
 
-            <div className='space-y-4 md:space-y-6 mb-8 md:mb-10'>
+            <div className='space-y-3 sm:space-y-4 md:space-y-6 mb-6 sm:mb-8 md:mb-10'>
               {[
                 { icon: User, label: 'Name', value: 'Abdel-Arip Saripada' },
                 { icon: Mail, label: 'Email', value: 'renzsrpd@gmail.com' },
@@ -97,26 +96,26 @@ export default function Contact() {
               ].map((item, index) => (
                 <motion.div
                   key={item.label}
-                  className='flex items-center gap-3 md:gap-4'
+                  className='flex items-center gap-2 sm:gap-3 md:gap-4'
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  whileHover={{ x: 8, scale: 1.02 }}
+                  whileHover={{ x: 4, scale: 1.01 }}
                 >
-                  <div className='w-10 md:w-12 h-10 md:h-12 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center'>
-                    <item.icon size={18} className='text-gray-400' />
+                  <div className='w-10 sm:w-12 h-10 sm:h-12 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center'>
+                    <item.icon size={16} className='sm:w-[18px] text-gray-400' />
                   </div>
                   <div>
-                    <span className='block text-xs text-gray-600 uppercase tracking-wider'>{item.label}</span>
-                    <span className='text-gray-300 text-sm md:text-base'>{item.value}</span>
+                    <span className='block text-[10px] sm:text-xs text-gray-600 uppercase tracking-wider'>{item.label}</span>
+                    <span className='text-gray-300 text-xs sm:text-sm md:text-base'>{item.value}</span>
                   </div>
                 </motion.div>
               ))}
             </div>
 
             <motion.div
-              className='flex gap-3'
+              className='flex gap-2 sm:gap-3'
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
@@ -131,20 +130,19 @@ export default function Contact() {
                   href={social.url}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400'
+                  className='w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400'
                   whileHover={{ scale: 1.1, y: -3, backgroundColor: 'rgba(255,255,255,0.15)' }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.8 + i * 0.1 }}
                 >
-                  <i className={`fab fa-${social.name} text-lg`} />
+                  <i className={`fab fa-${social.name} text-base sm:text-lg`} />
                 </motion.a>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.form
             action='https://formspree.io/f/maqvbgqb'
             method='POST'
@@ -153,9 +151,9 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ margin: '-50px' }}
             transition={{ duration: 0.6 }}
-            className='p-4 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10'
+            className='p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-3xl bg-white/5 border border-white/10'
           >
-            <div className='space-y-6'>
+            <div className='space-y-4 sm:space-y-6'>
               {['name', 'email', 'message'].map((field) => (
                 <motion.div
                   key={field}
@@ -164,7 +162,7 @@ export default function Contact() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
                 >
-                  <label htmlFor={`field-${field}`} className='block text-sm text-gray-500 mb-2 capitalize'>
+                  <label htmlFor={`field-${field}`} className='block text-xs sm:text-sm text-gray-500 mb-2 capitalize'>
                     Your {field}
                   </label>
                   {field === 'message' ? (
@@ -176,7 +174,7 @@ export default function Contact() {
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full bg-white/5 border ${focused === field ? 'border-white' : 'border-white/10'} rounded-xl py-3 md:py-4 px-4 md:px-5 text-white placeholder-gray-600 focus:outline-none transition-colors resize-none`}
+                      className={`w-full bg-white/5 border ${focused === field ? 'border-white' : 'border-white/10'} rounded-xl py-2.5 sm:py-3 md:py-4 px-3 sm:px-4 md:px-5 text-white placeholder-gray-600 focus:outline-none transition-colors resize-none text-sm sm:text-base`}
                     />
                   ) : (
                     <input
@@ -187,52 +185,50 @@ export default function Contact() {
                       required
                       value={formData[field as keyof typeof formData]}
                       onChange={(e) => setFormData({ ...formData, [field]: e.target.value })}
-                      className={`w-full bg-white/5 border ${focused === field ? 'border-white' : 'border-white/10'} rounded-xl py-3 md:py-4 px-4 md:px-5 text-white placeholder-gray-600 focus:outline-none transition-colors`}
+                      className={`w-full bg-white/5 border ${focused === field ? 'border-white' : 'border-white/10'} rounded-xl py-2.5 sm:py-3 md:py-4 px-3 sm:px-4 md:px-5 text-white placeholder-gray-600 focus:outline-none transition-colors text-sm sm:text-base`}
                     />
                   )}
                 </motion.div>
               ))}
 
-              {/* Success Message */}
               {status === 'success' && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className='flex items-center gap-3 p-4 rounded-xl bg-green-500/20 border border-green-500/30 text-green-400'
+                  className='flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-green-500/20 border border-green-500/30 text-green-400 text-xs sm:text-sm'
                 >
-                  <CheckCircle size={20} />
-                  <span className='text-sm'>Message sent successfully! I'll get back to you soon.</span>
+                  <CheckCircle size={16} className='sm:w-[20px]' />
+                  <span>Message sent successfully! I'll get back to you soon.</span>
                 </motion.div>
               )}
 
-              {/* Error Message */}
               {status === 'error' && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className='flex items-center gap-3 p-4 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400'
+                  className='flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400 text-xs sm:text-sm'
                 >
-                  <AlertCircle size={20} />
-                  <span className='text-sm'>{errorMessage}</span>
+                  <AlertCircle size={16} className='sm:w-[20px]' />
+                  <span>{errorMessage}</span>
                 </motion.div>
               )}
 
               <motion.button
                 type='submit'
                 disabled={status === 'loading'}
-                className='w-full inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-white text-black rounded-full font-medium text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed'
+                className='w-full inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 md:px-8 md:py-4 bg-white text-black rounded-full font-medium text-xs sm:text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed'
                 whileHover={status !== 'loading' ? { scale: 1.02, y: -2, boxShadow: '0 10px 30px rgba(255,255,255,0.2)' } : {}}
                 whileTap={{ scale: status === 'loading' ? 1 : 0.98 }}
               >
                 {status === 'loading' ? (
                   <>
-                    <Loader2 size={18} className='animate-spin' />
+                    <Loader2 size={16} className='sm:w-[18px] animate-spin' />
                     Sending...
                   </>
                 ) : (
                   <>
                     Send Message
-                    <Send size={18} />
+                    <Send size={16} className='sm:w-[18px]' />
                   </>
                 )}
               </motion.button>

@@ -35,6 +35,17 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
     if (element) {
@@ -48,14 +59,15 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-[60] transition-all duration-500 ${
         scrolled ? 'gradient-hero bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/5' : 'gradient-hero'
       }`}
+      style={{ height: 'auto', minHeight: '64px' }}
     >
-      <div className='max-w-[1200px] mx-auto px-6 md:px-16'>
-        <nav className='flex items-center justify-between h-20'>
+      <div className='max-w-[1200px] mx-auto px-4 sm:px-6 md:px-16'>
+        <nav className='flex items-center justify-between h-16 sm:h-20'>
           <motion.button
-            className='md:hidden p-2 text-white'
+            className='md:hidden p-2 text-white z-50 relative'
             onClick={() => setIsOpen(!isOpen)}
             whileTap={{ scale: 0.95 }}
             aria-label='Toggle menu'
@@ -69,7 +81,7 @@ export default function Header() {
               e.preventDefault()
               scrollToSection('#home')
             }}
-            className='text-xl font-bold text-white tracking-tight'
+            className='text-lg sm:text-xl font-bold text-white tracking-tight z-50 relative'
             whileHover={{ scale: 1.02 }}
           >
             <span className='text-gray-400'>Port</span>folio
@@ -108,9 +120,10 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className='md:hidden bg-[#0a0a0a]/98 backdrop-blur-md border-t border-white/5'
+            transition={{ duration: 0.3 }}
+            className='md:hidden bg-[#0a0a0a]/98 backdrop-blur-md border-t border-white/5 overflow-hidden'
           >
-            <ul className='flex flex-col p-6 gap-2 text-left'>
+            <ul className='flex flex-col p-4 sm:p-6 gap-2 text-left'>
               {navLinks.map((link, index) => (
                 <motion.li
                   key={link.name}
@@ -124,7 +137,7 @@ export default function Header() {
                       e.preventDefault()
                       scrollToSection(link.href)
                     }}
-                    className={`block text-lg font-medium py-3 px-4 rounded-xl transition-all ${
+                    className={`block text-base sm:text-lg font-medium py-3 px-4 rounded-xl transition-all ${
                       activeSection === link.href.slice(1)
                         ? 'text-white bg-white/10'
                         : 'text-gray-400 hover:text-white hover:bg-white/5'
