@@ -4,7 +4,7 @@ import profileImg from '../assets/profile2.jpg'
 const stats = [
   { value: '4', label: 'Projects' },
   { value: '2', label: 'Years Exp' },
-  { value: '4', label: 'Clients' },
+  { value: '3', label: 'Clients' },
   { value: '80%', label: 'Satisfaction' }
 ]
 

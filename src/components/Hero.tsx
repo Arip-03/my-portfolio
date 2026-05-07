@@ -68,7 +68,7 @@ export default function Hero() {
               variants={itemVariants}
               className='text-xl md:text-2xl lg:text-3xl text-gray-300 mb-4 md:mb-6'
             >
-              Web Designer
+              Frontend Developer | Web Developer
             </motion.p>
 
             <motion.p
@@ -110,7 +110,7 @@ export default function Hero() {
                 <i className='fab fa-facebook-f text-lg' />
               </motion.a>
               <motion.a
-                href='https://linkedin.com'
+                href='https://www.linkedin.com/in/abdel-arip-saripada-590634408/'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors'

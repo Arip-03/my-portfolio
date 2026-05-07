@@ -1,21 +1,51 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Send, Mail, User, Phone } from 'lucide-react'
+import { Send, Mail, User, Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [focused] = useState<string | null>(null)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    alert(`Thank you ${formData.name}! Your message has been sent.`)
-    setFormData({ name: '', email: '', message: '' })
+    setStatus('loading')
+    setErrorMessage('')
+
+    try {
+      const response = await fetch('https://formspree.io/f/maqvbgqb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      })
+
+      if (response.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setStatus('idle'), 5000)
+      } else {
+        const data = await response.json()
+        setStatus('error')
+        setErrorMessage(data.error || 'Something went wrong. Please try again.')
+        setTimeout(() => setStatus('idle'), 5000)
+      }
+    } catch (error) {
+      setStatus('error')
+      setErrorMessage('Network error. Please check your connection and try again.')
+      setTimeout(() => setStatus('idle'), 5000)
+    }
   }
 
   return (
     <section id='contact' className='py-24 md:py-32 gradient-bg' style={{ backgroundColor: '#111111' }}>
       <div className='max-w-[1200px] mx-auto px-6 md:px-16'>
-        {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -85,17 +115,22 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Social Links */}
             <motion.div
               className='flex gap-3'
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
             >
-              {['github', 'facebook', 'linkedin'].map((social, i) => (
+              {[
+                { name: 'github', url: 'https://github.com/Arip-03' },
+                { name: 'facebook', url: 'https://www.facebook.com/abdel.arip.srpd?mibextid=ZbWKwL' },
+                { name: 'linkedin', url: 'https://www.linkedin.com/in/abdel-arip-saripada-590634408/' }
+              ].map((social, i) => (
                 <motion.a
-                  key={social}
-                  href='#'
+                  key={social.name}
+                  href={social.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
                   className='w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400'
                   whileHover={{ scale: 1.1, y: -3, backgroundColor: 'rgba(255,255,255,0.15)' }}
                   initial={{ opacity: 0, y: 20 }}
@@ -103,7 +138,7 @@ export default function Contact() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.8 + i * 0.1 }}
                 >
-                  <i className={`fab fa-${social} text-lg`} />
+                  <i className={`fab fa-${social.name} text-lg`} />
                 </motion.a>
               ))}
             </motion.div>
@@ -111,6 +146,8 @@ export default function Contact() {
 
           {/* Contact Form */}
           <motion.form
+            action='https://formspree.io/f/maqvbgqb'
+            method='POST'
             onSubmit={handleSubmit}
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -156,14 +193,48 @@ export default function Contact() {
                 </motion.div>
               ))}
 
+              {/* Success Message */}
+              {status === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className='flex items-center gap-3 p-4 rounded-xl bg-green-500/20 border border-green-500/30 text-green-400'
+                >
+                  <CheckCircle size={20} />
+                  <span className='text-sm'>Message sent successfully! I'll get back to you soon.</span>
+                </motion.div>
+              )}
+
+              {/* Error Message */}
+              {status === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className='flex items-center gap-3 p-4 rounded-xl bg-red-500/20 border border-red-500/30 text-red-400'
+                >
+                  <AlertCircle size={20} />
+                  <span className='text-sm'>{errorMessage}</span>
+                </motion.div>
+              )}
+
               <motion.button
                 type='submit'
-                className='w-full inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-white text-black rounded-full font-medium text-sm md:text-base'
-                whileHover={{ scale: 1.02, y: -2, boxShadow: '0 10px 30px rgba(255,255,255,0.2)' }}
-                whileTap={{ scale: 0.98 }}
+                disabled={status === 'loading'}
+                className='w-full inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-white text-black rounded-full font-medium text-sm md:text-base disabled:opacity-50 disabled:cursor-not-allowed'
+                whileHover={status !== 'loading' ? { scale: 1.02, y: -2, boxShadow: '0 10px 30px rgba(255,255,255,0.2)' } : {}}
+                whileTap={{ scale: status === 'loading' ? 1 : 0.98 }}
               >
-                Send Message
-                <Send size={18} />
+                {status === 'loading' ? (
+                  <>
+                    <Loader2 size={18} className='animate-spin' />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+                    <Send size={18} />
+                  </>
+                )}
               </motion.button>
             </div>
           </motion.form>

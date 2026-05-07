@@ -58,7 +58,7 @@ export default function Footer() {
               {[
                 { href: 'https://github.com/Arip-03', icon: 'fab fa-github' },
                 { href: 'https://www.facebook.com/abdel.arip.srpd?mibextid=ZbWKwL', icon: 'fab fa-facebook-f' },
-                { href: 'https://linkedin.com', icon: 'fab fa-linkedin-in' }
+                { href: 'https://www.linkedin.com/in/abdel-arip-saripada-590634408/', icon: 'fab fa-linkedin-in' }
               ].map((social, i) => (
                 <motion.a
                   key={social.href}

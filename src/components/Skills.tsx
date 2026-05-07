@@ -9,7 +9,8 @@ const skills = [
   { name: 'Figma', icon: 'fab fa-figma', color: '#f24e1e' },
   { name: 'Git', icon: 'fab fa-git-alt', color: '#f05032' },
   { name: 'Tailwind', icon: 'fab fa-css3-alt', color: '#06b6d4' },
-  { name: 'Video Editing', icon: 'fas fa-video', color: '#8b5cf6' },
+  { name: 'PHP', icon: 'fab fa-php', color: '#777bb4' },
+  { name: 'MySQL', icon: 'fas fa-database', color: '#4479a1' },
 ]
 
 export default function Skills() {
@@ -32,7 +33,7 @@ export default function Skills() {
           </div>
 
           {/* Circular Cards Grid with Staggered Animation */}
-          <div className='grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4 md:gap-6 justify-items-center'>
+          <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-10 gap-4 md:gap-6 justify-items-center'>
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
@@ -40,10 +41,11 @@ export default function Skills() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ 
-                  delay: index * 0.1, 
-                  duration: 0.4,
+                  delay: index * 0.08, 
+                  duration: 0.5,
                   type: 'spring',
-                  stiffness: 200
+                  stiffness: 150,
+                  damping: 12
                 }}
                 className='group relative w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center cursor-pointer'
                 style={{

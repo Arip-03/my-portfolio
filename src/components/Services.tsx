@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Palette, Code, Layers, Video } from 'lucide-react'
+import { Palette, Code, Layers } from 'lucide-react'
 
 const services = [
   {
@@ -19,12 +19,6 @@ const services = [
     title: 'UI/UX Design',
     description: 'User-centered design focused on creating intuitive and enjoyable experiences. Ensuring users can easily navigate and engage with your site.',
     features: ['User Research', 'Wireframing', 'Usability Testing', 'Design Systems']
-  },
-  {
-    icon: Video,
-    title: 'Video Editing',
-    description: 'Creating and editing engaging video content using transitions, effects, color grading, and storytelling.',
-    features: ['Video Editing', 'Motion Graphics', 'Color Grading', 'Sound Design']
   }
 ]
 
@@ -49,7 +43,7 @@ export default function Services() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6'>
           {services.map((service, index) => (
             <motion.div
               key={service.title}
